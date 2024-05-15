@@ -29,13 +29,19 @@ public class BookingDAOTest {
      */
     @Test
     void  getAllBookingRequestsTest() {
+
+
          BookingDAO bookingDAO1 = new BookingDAO(bookings);
          BookingDAO bookingDAO2 = new BookingDAO(bookings);
-
+         bookings.get(bookingDAO1);
+         bookings.get(bookingDAO2);
+         bookingDAO.save(bookings.get(bookingDAO1));
+         bookingDAO.save(bookings.get(bookingDAO2));
          bookingDAO1.getAllBookingRequests().forEach(System.out::println);
          bookingDAO2.getAllBookingRequests().forEach(System.out::println);
 
-         assertThat(bookingDAO.getAllBookingRequests()).isEmpty();
+         assertThat(bookingDAO.getAllBookingRequests()).hasSize(2);
+         assertThat(bookingDAO.getAllBookingRequests()).isNotEmpty();
 
 
     }
@@ -50,9 +56,15 @@ public class BookingDAOTest {
     void getAllUUIDsTest() {
 
         BookingDAO bookingDAO1 = new BookingDAO(bookings);
+        BookingDAO bookingDAO2 = new BookingDAO(bookings);
+        bookings.get(bookingDAO1);
+        bookings.get(bookingDAO2);
+        bookingDAO.save(bookings.get(bookingDAO1));
+        bookingDAO.save(bookings.get(bookingDAO2));
         bookingDAO1.getAllUUIDs().forEach(System.out::println);
 
-        assertThat(bookingDAO1.getAllUUIDs()).isEmpty();
+
+        assertThat(bookingDAO1.getAllUUIDs()).isNotEmpty();
 
 
     }
@@ -67,6 +79,19 @@ public class BookingDAOTest {
     @Test
     void getTest() {
 
+        BookingDAO bookingDAO1 = new BookingDAO(bookings);
+        BookingDAO bookingDAO2 = new BookingDAO(bookings);
+        bookings.get(bookingDAO1);
+        bookings.get(bookingDAO2);
+        bookingDAO.save(bookings.get(bookingDAO1));
+        bookingDAO.save(bookings.get(bookingDAO2));
+        bookingDAO1.getAllUUIDs().forEach(System.out::println);
+
+        bookingDAO1.get("test");
+
+        assertThat(bookingDAO1.get("test")).isNull();
+
+
     }
 
     /**
@@ -77,6 +102,11 @@ public class BookingDAOTest {
      */
     @Test
     void deleteTest() {
+
+        BookingDAO bookingDAO1 = new BookingDAO(bookings);
+        bookings.get(bookingDAO1);
+        bookingDAO1.delete("test");
+        assertThat(bookingDAO1.get("test")).isNull();
 
     }
 
