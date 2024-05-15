@@ -4,7 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class BookingDAOTest {
 
@@ -26,6 +29,14 @@ public class BookingDAOTest {
      */
     @Test
     void  getAllBookingRequestsTest() {
+         BookingDAO bookingDAO1 = new BookingDAO(bookings);
+         BookingDAO bookingDAO2 = new BookingDAO(bookings);
+
+         bookingDAO1.getAllBookingRequests().forEach(System.out::println);
+         bookingDAO2.getAllBookingRequests().forEach(System.out::println);
+
+         assertThat(bookingDAO.getAllBookingRequests()).isEmpty();
+
 
     }
 
@@ -37,6 +48,12 @@ public class BookingDAOTest {
      */
     @Test
     void getAllUUIDsTest() {
+
+        BookingDAO bookingDAO1 = new BookingDAO(bookings);
+        bookingDAO1.getAllUUIDs().forEach(System.out::println);
+
+        assertThat(bookingDAO1.getAllUUIDs()).isEmpty();
+
 
     }
 

@@ -65,6 +65,8 @@ public class BookingServiceTest {
     @Test
     void getAvailablePlaceCountTest() {
 
+
+
     }
 
     /**
