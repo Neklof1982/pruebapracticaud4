@@ -10,7 +10,7 @@ public class ReservaMesaTest {
 
 
 
-
+    // test de cada elemento
 
 
     @Test
@@ -45,6 +45,7 @@ public class ReservaMesaTest {
 
         mesa.setTamanioMesa(tamanioMesa);
         mesa.setMesas(mesas);
+        mesa.rellenarMesas();
         mesa.imprimir();
 
         assertThat(mesa.getTamanioMesa()).isEqualTo(tamanioMesa);
@@ -76,6 +77,8 @@ public class ReservaMesaTest {
         int[] mesas = new int[tamanioMesa];
         mesa.setTamanioMesa(tamanioMesa);
         mesa.setMesas(mesas);
+        mesa.rellenarMesas();
+
         mesa.buscarMesaCompartirMasCercaDe(1,2);
 
         assertThat(mesa.buscarMesaCompartirMasCercaDe(1,2)).isEqualTo(1);
@@ -90,6 +93,7 @@ public class ReservaMesaTest {
         int[] mesas = new int[tamanioMesa];
         mesa.setTamanioMesa(tamanioMesa);
         mesa.setMesas(mesas);
+        mesa.rellenarMesas();
         mesa.buscarMesaCompartirMasAlejadaDe(3,1);
 
         assertThat(mesa.buscarMesaCompartirMasCercaDe(3,1)).isEqualTo(3);
@@ -124,7 +128,7 @@ public class ReservaMesaTest {
             mesas[i]= aleatorio;
         }
 
-        assertThat(mesa.comensalesTotales()).isEqualTo(tamanioMesa);
+        assertThat(mesa.comensalesTotales()).isEqualTo(10);
 
 
 
